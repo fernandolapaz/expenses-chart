@@ -1,0 +1,227 @@
+@font-face {
+	font-family: 'DM Sans';
+	src: url(./assets/fonts/DMSans-VariableFont_wght.ttf), local('DM Sans');
+	font-display: swap;
+}
+
+:root {
+	--clr-neutral-1: 33, 100%, 98%;
+	--clr-neutral-2: 27, 66%, 82%;
+	--clr-neutral-3: 28, 10%, 43%;
+	--clr-neutral-4: 25, 47%, 15%;
+	--clr-primary-1: 10, 89%, 45%;
+}
+
+:root.dark {
+	--clr-neutral-1: 33, 100%, 5%;
+	--clr-neutral-2: 27, 0%, 18%;
+	--clr-neutral-3: 28, 10%, 57%;
+	--clr-neutral-4: 25, 47%, 85%;
+	--clr-primary-1: 10, 89%, 60%;
+}
+
+#root {
+	min-height: 100vh;
+	display: grid;
+	place-content: center;
+	background-color: hsl(var(--clr-neutral-2));
+	padding: 1rem;
+	font-family: 'DM Sans', sans-serif;
+	line-height: 1;
+}
+
+/* Card */
+main {
+	display: grid;
+	gap: 1rem;
+	width: min(92vw, 33.75rem);
+
+	& > * {
+		border-radius: 0.75rem;
+	}
+}
+
+.balance {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: hsl(var(--clr-primary-1));
+	color: hsl(var(--clr-neutral-1));
+	padding: 1.5rem;
+
+	& .title {
+		display: grid;
+		gap: 0.85rem;
+
+		& .label {
+			font-weight: normal;
+		}
+
+		& .number {
+			font-size: 1.5rem;
+		}
+	}
+
+	& .logo {
+		width: 3.5rem;
+	}
+}
+
+.spending {
+	display: grid;
+	gap: 0.5rem;
+	background-color: hsl(var(--clr-neutral-1));
+	color: hsl(var(--clr-neutral-4));
+	padding: 2rem 1.5rem 0.5rem;
+
+	& .daily {
+		border-bottom: 0.1rem solid hsl(var(--clr-neutral-2));
+		padding-bottom: 1.75rem;
+
+		& .title {
+			font-size: 1.5rem;
+			margin-bottom: 3rem;
+		}
+
+		& .graph {
+			display: grid;
+			grid-template-columns: repeat(7, 1fr);
+			justify-content: space-between;
+			align-items: end;
+			gap: min(3vw, 1.125rem);
+
+			& .bar-box {
+				display: grid;
+				justify-items: center;
+				gap: 0.65rem;
+				font-size: 0.75rem;
+				color: hsl(var(--clr-neutral-3));
+				position: relative;
+
+				& > * {
+					border-radius: 0.25rem;
+				}
+
+				& .amount {
+					position: absolute;
+					top: -2rem;
+					background-color: hsl(var(--clr-neutral-4));
+					color: hsl(var(--clr-neutral-1));
+					padding: 0.25rem;
+				}
+
+				& .bar {
+					width: 100%;
+
+					&:hover,
+					&:focus-visible {
+						filter: brightness(1.2);
+					}
+				}
+
+				& .day {
+					@media screen and (max-width: 18rem) {
+						writing-mode: vertical-lr;
+						height: 1rem;
+					}
+				}
+			}
+		}
+	}
+
+	& .total {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 1rem;
+		padding: 1.3rem 0 1.25rem;
+
+		& .title {
+			display: grid;
+			gap: 0.55rem;
+
+			& .label {
+				font-weight: normal;
+				color: hsl(var(--clr-neutral-3));
+			}
+
+			& .number {
+				font-size: 2rem;
+			}
+		}
+
+		& .change {
+			display: grid;
+			justify-items: end;
+			align-content: end;
+			gap: 0.4rem;
+			padding-bottom: 0.3rem;
+
+			& .label {
+				color: hsl(var(--clr-neutral-3));
+			}
+
+			& .number {
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+/* Desktop */
+@media screen and (min-width: 30rem) {
+	main {
+		gap: 1.5rem;
+		font-size: 1.125rem;
+
+		& > * {
+			border-radius: 1.25rem;
+		}
+	}
+
+	.balance {
+		padding: 1.925rem 2.4rem 1.925rem 2rem;
+
+		& .title {
+			& .number {
+				font-size: 2rem;
+			}
+		}
+
+		& .logo {
+			width: 4.5rem;
+		}
+	}
+
+	.spending {
+		gap: 1rem;
+		padding: 2.4rem 2.5rem 1.6rem;
+
+		& .daily {
+			padding-bottom: 2.15rem;
+
+			& .title {
+				font-size: 2.075rem;
+				margin-bottom: 4.3rem;
+			}
+
+			& .graph {
+				& .bar-box {
+					font-size: 0.9375rem;
+
+					& .amount {
+						padding: 0.3rem 0.6rem;
+					}
+				}
+			}
+		}
+
+		& .total {
+			& .title {
+				& .number {
+					font-size: 3.125rem;
+				}
+			}
+		}
+	}
+}
